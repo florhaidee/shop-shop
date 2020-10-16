@@ -1,5 +1,5 @@
 # SHOP-SHOP ![badge](https://img.shields.io/badge/license-MIT-blue) [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-v2.0%20adopted-ff69b4.svg)](code_of_conduct.md)
-  An e-commerce platform that allows users to purchase
+  An e-commerce platform that allows users to purchase. Go to the live URL: https://a-shopping-place.herokuapp.com/
 
   ## Description 
 
