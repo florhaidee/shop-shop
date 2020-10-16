@@ -3,16 +3,21 @@ import { useLazyQuery } from '@apollo/react-hooks';
 import CartItem from '../CartItem';
 import Auth from '../../utils/auth';
 import './style.css';
-import { useStoreContext } from '../../utils/GlobalState';
+//import { useStoreContext } from '../../utils/GlobalState';
 import { TOGGLE_CART, ADD_MULTIPLE_TO_CART } from "../../utils/actions";
 import { idbPromise } from "../../utils/helpers";
 import { QUERY_CHECKOUT } from '../../utils/queries';
 import { loadStripe } from '@stripe/stripe-js';
+import { useSelector, useDispatch } from 'react-redux';
 
 const stripePromise = loadStripe('pk_test_TYooMQauvdEDq54NiTphI7jx');
 
 const Cart = () => {
-  const [state, dispatch] = useStoreContext();
+  //const [state, dispatch] = useStoreContext();
+
+  //implementing redux
+  const state = useSelector((state) => state);
+  const dispatch = useDispatch();
   const [getCheckout, { data }] = useLazyQuery(QUERY_CHECKOUT);
 
   //useEffect() specifically for Stripe
@@ -23,7 +28,8 @@ const Cart = () => {
       });
     }
   }, [data]);
-  
+
+  //useEffect to add to the cart
   useEffect(() => {
     async function getCart() {
       const cart = await idbPromise('cart', 'get');
